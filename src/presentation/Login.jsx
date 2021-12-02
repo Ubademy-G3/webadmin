@@ -5,13 +5,9 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
@@ -22,8 +18,8 @@ const theme = createTheme();
 export default function Login() {
   const [hasLoginError, setHasLoginError] = useState(null);
   const navigate = useNavigate();
-  let location = useLocation();
-  let from = location.state?.from?.pathname || "/";
+  const location = useLocation();
+  const from = location.state?.from?.pathname || '/';
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -33,32 +29,30 @@ export default function Login() {
       password: data.get('password'),
     };
 
-    axios.post(`https://staging-api-gateway-app.herokuapp.com/authentication`, logInfo)
-      .then(res => {
-          console.log(res.status)
-          if (res.status !== 200) {
-            throw new Error(res.status);
-          }
-            if (res.data.rol !== 'admin') {
-                setHasLoginError("Unauthorized: Rol must be 'admin'")
-                return;
-            }
-            localStorage.setItem("loggedUser", res.data);
-            setHasLoginError(null);
-            navigate(from, { replace: true });
-      })
-      .catch(err => {
-        if (err.response && err.response.status && (err.response.status === 400)) {
-            setHasLoginError('Invalid fields')
-        } else if (err.response && err.response.status && (err.response.status === 403)) {
-            setHasLoginError('Invalid credentials')
-        } else if (err.response && err.response.status && (err.response.status === 404)) {
-            setHasLoginError('User not found with given email')
-        } else {
-            console.log(err)
-            setHasLoginError('Unexpected error. Please try again in a few seconds.')
+    axios.post('https://staging-api-gateway-app.herokuapp.com/authentication', logInfo)
+      .then((res) => {
+        if (res.status !== 200) {
+          throw new Error(res.status);
         }
+        if (res.data.rol !== 'admin') {
+          setHasLoginError("Unauthorized: Rol must be 'admin'");
+          return;
+        }
+        localStorage.setItem('loggedUser', res.data);
+        setHasLoginError(null);
+        navigate(from, { replace: true });
       })
+      .catch((err) => {
+        if (err.response && err.response.status && (err.response.status === 400)) {
+          setHasLoginError('Invalid fields');
+        } else if (err.response && err.response.status && (err.response.status === 403)) {
+          setHasLoginError('Invalid credentials');
+        } else if (err.response && err.response.status && (err.response.status === 404)) {
+          setHasLoginError('User not found with given email');
+        } else {
+          setHasLoginError('Unexpected error. Please try again in a few seconds.');
+        }
+      });
   };
 
   return (
@@ -73,12 +67,11 @@ export default function Login() {
             alignItems: 'center',
           }}
         >
-          <Avatar src="./ubademy.png" sx={{ width: 240, height: 240 }}></Avatar>
+          <Avatar src="./ubademy.png" sx={{ width: 240, height: 240 }} />
 
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-            {hasLoginError &&
-                <Alert severity="error">{hasLoginError}</Alert>
-            }
+            {hasLoginError
+                && <Alert severity="error">{hasLoginError}</Alert>}
             <TextField
               margin="normal"
               required
@@ -99,7 +92,7 @@ export default function Login() {
               id="password"
               autoComplete="current-password"
             />
-            
+
             <Button
               type="submit"
               fullWidth

@@ -1,26 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
   Routes,
   BrowserRouter,
   Route,
   useLocation,
-  Navigate
+  Navigate,
 } from 'react-router-dom';
 import Dashboard from './presentation/Dashboard';
 import Login from './presentation/Login';
 import './App.css';
 
-function requireAuth(nextState, replace) {
-  if (!localStorage.getItem("loggedUser")) {
-    replace({
-      pathname: '/login',
-      state: { nextPathname: nextState.location.pathname }
-    })
-  }
-}
-
 function RequireAuth({ children }) {
-  let location = useLocation();
+  const location = useLocation();
 
   if (!localStorage.getItem('loggedUser')) {
     // Redirect them to the /login page, but save the current location they were
@@ -37,17 +28,17 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-      <Routes>
+        <Routes>
           <Route path="/login" element={<Login />} />
           <Route
             path="/"
-            element={
+            element={(
               <RequireAuth>
                 <Dashboard />
               </RequireAuth>
-            }
+            )}
           />
-      </Routes>
+        </Routes>
       </BrowserRouter>
     </div>
   );
