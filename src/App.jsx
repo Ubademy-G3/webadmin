@@ -6,18 +6,19 @@ import {
   useLocation,
   Navigate,
 } from 'react-router-dom';
-import Dashboard from './presentation/Dashboard';
-import Login from './presentation/Login';
+import Dashboard from './presentation/dashboard/Dashboard';
+import Login from './presentation/login/Login';
+import Users from './presentation/users/Users';
+import Courses from './presentation/courses/Courses';
+import Transactions from './presentation/transactions/Transactions';
+import Services from './presentation/services/Services';
+import Layout from './presentation/Layout';
 import './App.css';
 
 function RequireAuth({ children }) {
   const location = useLocation();
 
   if (!localStorage.getItem('loggedUser')) {
-    // Redirect them to the /login page, but save the current location they were
-    // trying to go to when they were redirected. This allows us to send them
-    // along to that page after they login, which is a nicer user experience
-    // than dropping them off on the home page.
     return <Navigate to="/login" state={{ from: location }} />;
   }
 
@@ -34,7 +35,49 @@ function App() {
             path="/"
             element={(
               <RequireAuth>
-                <Dashboard />
+                <Layout>
+                  <Dashboard />
+                </Layout>
+              </RequireAuth>
+            )}
+          />
+          <Route
+            path="/users"
+            element={(
+              <RequireAuth>
+                <Layout>
+                  <Users />
+                </Layout>
+              </RequireAuth>
+            )}
+          />
+          <Route
+            path="/courses"
+            element={(
+              <RequireAuth>
+                <Layout>
+                  <Courses />
+                </Layout>
+              </RequireAuth>
+            )}
+          />
+          <Route
+            path="/transactions"
+            element={(
+              <RequireAuth>
+                <Layout>
+                  <Transactions />
+                </Layout>
+              </RequireAuth>
+            )}
+          />
+          <Route
+            path="/services"
+            element={(
+              <RequireAuth>
+                <Layout>
+                  <Services />
+                </Layout>
               </RequireAuth>
             )}
           />
