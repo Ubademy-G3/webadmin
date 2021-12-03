@@ -112,7 +112,7 @@ export default function Layout({ children }) {
               noWrap
               sx={{ flexGrow: 1 }}
             >
-              Dashboard
+              UBADEMY - WebAdmin
             </Typography>
             <IconButton color="inherit" onClick={() => { logout(); }}>
               <LogoutIcon />
