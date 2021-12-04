@@ -68,18 +68,17 @@ export default function CourseFilter(props) {
         <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
           <FormLabel component="legend">Category</FormLabel>
           <FormGroup>
-            <FormControlLabel
-              control={
-                <Checkbox onChange={(e) => { addCategories(e.target.value, e.target.checked); }} value="1" />
-              }
-              label="Math"
-            />
-            <FormControlLabel
-              control={
-                <Checkbox onChange={(e) => { addCategories(e.target.value, e.target.checked); }} value="2" />
-              }
-              label="Physics"
-            />
+            {p.categories.map((category) => (
+              <FormControlLabel
+                control={(
+                  <Checkbox
+                    onChange={(e) => { addCategories(e.target.value, e.target.checked); }}
+                    value={category.id}
+                  />
+                )}
+                label={category.name}
+              />
+            ))}
           </FormGroup>
         </FormControl>
         <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">

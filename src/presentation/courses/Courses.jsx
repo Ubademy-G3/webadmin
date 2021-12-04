@@ -63,7 +63,9 @@ export default function Courses() {
         Courses Admin
       </Typography>
       <SearchBar input={searchInput} setInput={setSearchInput} />
-      <CourseFilter query={query} setQuery={setQuery} />
+      {categories && (
+        <CourseFilter query={query} setQuery={setQuery} categories={categories} />
+      )}
       {courses && categories ? (
         <CoursesTable courses={courses} categories={categories} />
       ) : (
