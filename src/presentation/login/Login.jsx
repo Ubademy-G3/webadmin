@@ -31,6 +31,7 @@ export default function Login() {
 
     axios.post('https://staging-api-gateway-app.herokuapp.com/authentication', logInfo)
       .then((res) => {
+        console.log(res);
         if (res.status !== 200) {
           throw new Error(res.status);
         }
@@ -38,7 +39,8 @@ export default function Login() {
           setHasLoginError("Unauthorized: Rol must be 'admin'");
           return;
         }
-        localStorage.setItem('loggedUser', res.data);
+        localStorage.setItem('userId', res.data.id);
+        localStorage.setItem('token', res.data.token);
         setHasLoginError(null);
         navigate(from, { replace: true });
       })

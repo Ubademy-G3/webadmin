@@ -9,6 +9,7 @@ import {
 import Dashboard from './presentation/dashboard/Dashboard';
 import Login from './presentation/login/Login';
 import Users from './presentation/users/Users';
+import UserProfile from './presentation/users/UserProfile';
 import Courses from './presentation/courses/Courses';
 import Transactions from './presentation/transactions/Transactions';
 import Services from './presentation/services/Services';
@@ -18,7 +19,7 @@ import './App.css';
 function RequireAuth({ children }) {
   const location = useLocation();
 
-  if (!localStorage.getItem('loggedUser')) {
+  if (!localStorage.getItem('userId') || !localStorage.getItem('token')) {
     return <Navigate to="/login" state={{ from: location }} />;
   }
 
@@ -47,6 +48,16 @@ function App() {
               <RequireAuth>
                 <Layout>
                   <Users />
+                </Layout>
+              </RequireAuth>
+            )}
+          />
+          <Route
+            path="/users/:id"
+            element={(
+              <RequireAuth>
+                <Layout>
+                  <UserProfile />
                 </Layout>
               </RequireAuth>
             )}
