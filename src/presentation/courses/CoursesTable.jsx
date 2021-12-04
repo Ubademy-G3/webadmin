@@ -13,8 +13,7 @@ export default function CoursesTable(props) {
   const p = props;
   const [page, setPage] = React.useState(1);
   const { slice, range } = useTable(p.courses.courses, page, 10);
-  console.log(slice);
-  console.log(range);
+
   return (
     <>
       <Table size="small">
