@@ -17,7 +17,7 @@ export default function Users() {
   const [users, setUsers] = React.useState([]);
 
   React.useEffect(() => {
-    axios.get('https://staging-users-service.herokuapp.com/users', { headers: { authorization: '47M47m' } })
+    axios.get('https://staging-api-gateway-app.herokuapp.com/users', { headers: { authorization: localStorage.getItem('token') } })
       .then((results) => results.data)
       .then((data) => {
         setUsers(data);
@@ -27,7 +27,7 @@ export default function Users() {
   return (
     <>
       <Typography component="h2" variant="h6" color="primary" gutterBottom>
-        Administración de Usuarios
+        Users Admin
       </Typography>
       <Table size="small">
         <TableHead>
