@@ -79,7 +79,8 @@ export default function Layout({ children }) {
   const navigate = useNavigate();
 
   function logout() {
-    localStorage.removeItem('loggedUser');
+    localStorage.removeItem('userId');
+    localStorage.removeItem('token');
     window.location.reload(false);
   }
 
