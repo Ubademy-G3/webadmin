@@ -15,7 +15,7 @@ export default function SearchBar(props) {
         marginBottom: '20px',
       }}
     >
-      <TextField hiddenLabel fullWidth label="Search course..." id="search-course" onChange={(e) => { p.setInput(e.target.value); }} />
+      <TextField hiddenLabel fullWidth label="Search course..." id="search-bar" onChange={(e) => { p.setInput(e.target.value); }} />
     </Box>
   );
 }
