@@ -11,6 +11,7 @@ import Login from './presentation/login/Login';
 import Users from './presentation/users/Users';
 import UserProfile from './presentation/users/UserProfile';
 import Courses from './presentation/courses/Courses';
+import CourseProfile from './presentation/courses/CourseProfile';
 import Transactions from './presentation/transactions/Transactions';
 import Services from './presentation/services/Services';
 import Layout from './presentation/Layout';
@@ -68,6 +69,16 @@ function App() {
               <RequireAuth>
                 <Layout>
                   <Courses />
+                </Layout>
+              </RequireAuth>
+            )}
+          />
+          <Route
+            path="/courses/:id"
+            element={(
+              <RequireAuth>
+                <Layout>
+                  <CourseProfile />
                 </Layout>
               </RequireAuth>
             )}
