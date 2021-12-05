@@ -50,7 +50,7 @@ export default function CourseCard(props) {
                 </Typography>
               </CardContent>
               <CardActions>
-                <Button size="small">See Course</Button>
+                <Button size="small" href={`/courses/${p.id}`}>See Course</Button>
               </CardActions>
             </Card>
           </StyledBadge>
