@@ -13,7 +13,6 @@ export default function CourseFilter(props) {
   // const [level, setLevel] = React.useState([]);
 
   const p = props;
-  console.log(p);
   const addCategories = (checkedItem, add) => {
     if (add) {
       categories.push(checkedItem);
