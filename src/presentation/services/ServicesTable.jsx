@@ -30,6 +30,7 @@ export default function ServicesTable(props) {
             <TableCell>Name</TableCell>
             <TableCell>Apikey</TableCell>
             <TableCell>State</TableCell>
+            <TableCell>Creation Date</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -43,6 +44,7 @@ export default function ServicesTable(props) {
               <TableCell>{row.name}</TableCell>
               <TableCell>{row.apikey}</TableCell>
               <TableCell>{row.state}</TableCell>
+              <TableCell>{row.timestamp.substring(0, 10)}</TableCell>
             </TableRow>
           ))}
         </TableBody>

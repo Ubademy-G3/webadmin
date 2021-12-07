@@ -73,9 +73,15 @@ export default function ServiceDialog(props) {
           </DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-description">
-              Service description here
+              {service.description}
+              <br />
+              <br />
+              Created at:
+              {' '}
+              {service.timestamp}
               <br />
               Apikey:
+              {' '}
               {service.apikey}
             </DialogContentText>
           </DialogContent>
