@@ -59,7 +59,7 @@ export default function Courses() {
 
   return (
     <>
-      <Typography component="h2" variant="h6" color="primary" gutterBottom>
+      <Typography component="h2" variant="h6" color="primary" style={{ margin: '20px' }} gutterBottom>
         Courses Admin
       </Typography>
       <SearchBar input={searchInput} setInput={setSearchInput} />
