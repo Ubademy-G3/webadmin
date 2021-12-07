@@ -6,6 +6,7 @@ import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import PersonIcon from '@mui/icons-material/Person';
+import AddIcon from '@mui/icons-material/Add';
 import TableFooter from '../TableFooter';
 import useTable from '../useTable';
 
@@ -16,6 +17,12 @@ export default function UsersTable(props) {
 
   return (
     <>
+      <div style={{ textAlign: 'left' }}>
+        <Button onClick={() => { p.setShowCreateAdminDialog(true); }}>
+          <AddIcon />
+          Add admin
+        </Button>
+      </div>
       <Table size="small">
         <TableHead>
           <TableRow>
