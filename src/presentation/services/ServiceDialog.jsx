@@ -37,6 +37,7 @@ export default function ServiceDialog(props) {
       .then(() => {
         p.setShowDialog(null);
         setOpen(false);
+        window.location.reload();
       });
   };
 
@@ -46,6 +47,7 @@ export default function ServiceDialog(props) {
       .then(() => {
         p.setShowDialog(null);
         setOpen(false);
+        window.location.reload();
       });
   };
 
