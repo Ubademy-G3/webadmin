@@ -225,7 +225,7 @@ export default function Dashboard() {
                   <Typography variant="h5">
                     Approval Rate
                   </Typography>
-                  {courses.metrics.approval_rate * 100}
+                  {courses.metrics.approval_rate}
                   %
                 </Paper>
               </Grid>
