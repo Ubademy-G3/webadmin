@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import EmailIcon from '@mui/icons-material/Email';
 import BadgeIcon from '@mui/icons-material/Badge';
 import PublicIcon from '@mui/icons-material/Public';
+import PaidIcon from '@mui/icons-material/Paid';
 import Grid from '@mui/material/Grid';
 import { useParams } from 'react-router-dom';
 import CourseCard from './CourseCard';
@@ -13,6 +14,7 @@ import CourseCard from './CourseCard';
 export default function UserProfile() {
   const [user, setUser] = React.useState([]);
   const [courses, setCourses] = React.useState([]);
+  const [wallet, setWallet] = React.useState([]);
   const params = useParams();
 
   React.useEffect(() => {
@@ -26,6 +28,13 @@ export default function UserProfile() {
       .then((results) => results.data)
       .then((data) => {
         setCourses(data);
+      });
+
+    axios.get(`https://staging-api-gateway-app.herokuapp.com/users/${params.id}/wallet`, { headers: { authorization: localStorage.getItem('token') } })
+      .then((results) => results.data)
+      .then((data) => {
+        console.log(data);
+        setWallet(data);
       });
   }, []);
 
@@ -47,16 +56,26 @@ export default function UserProfile() {
               {user.description}
             </Typography>
           </div>
-          {user.rol && user.rol.toLowerCase() === 'student' && (
-            <div style={{ textAlign: 'center' }}>
-              <img src={`/${user.subscription}_subscription.jpg`} alt="Subscription Type" style={{ width: '30%' }} />
-              <Typography variant="subtitle2">
-                <i>
-                  {`Valid until ${user.subscriptionExpirationDate.substring(0, 10)}`}
-                </i>
-              </Typography>
+          <div>
+            {user.rol && user.rol.toLowerCase() === 'student' && (
+              <div style={{ textAlign: 'center' }}>
+                <img src={`/${user.subscription}_subscription.jpg`} alt="Subscription Type" style={{ width: '30%' }} />
+                <Typography variant="subtitle2">
+                  <i>
+                    {`Valid until ${user.subscriptionExpirationDate.substring(0, 10)}`}
+                  </i>
+                </Typography>
+              </div>
+            )}
+            <div style={{ textAlign: 'center', marginTop: 30 }}>
+              <PaidIcon fontSize="large" />
+              <div style={{ marginLeft: '5px' }}>
+                <Typography variant="subtitle2">
+                  {wallet.balance}
+                </Typography>
+              </div>
             </div>
-          )}
+          </div>
         </div>
         <div style={{ textAlign: 'left', margin: '20px', marginLeft: '60px' }}>
           <div style={{ display: 'flex' }}>
