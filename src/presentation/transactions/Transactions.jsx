@@ -37,7 +37,7 @@ export default function Transactions() {
   }
 
   React.useEffect(() => {
-    axios.get('https://staging-api-gateway-app.herokuapp.com/metrics/payments/', { headers: { authorization: localStorage.getItem('token') } })
+    axios.get('https://staging-api-gateway-app-v2.herokuapp.com/metrics/payments/', { headers: { authorization: localStorage.getItem('token') } })
       .then((results) => results.data)
       .then((d) => {
         setMetrics(d);
@@ -45,7 +45,7 @@ export default function Transactions() {
         createTransactionsData(d);
         console.log(d);
       });
-    axios.get('https://staging-api-gateway-app.herokuapp.com/deposits', { headers: { authorization: localStorage.getItem('token') } })
+    axios.get('https://staging-api-gateway-app-v2.herokuapp.com/deposits', { headers: { authorization: localStorage.getItem('token') } })
       .then((results) => results.data)
       .then((d) => {
         setPayments(d);

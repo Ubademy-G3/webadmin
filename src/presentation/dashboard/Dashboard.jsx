@@ -12,12 +12,12 @@ export default function Dashboard() {
   const [courses, setCourses] = React.useState(null);
 
   React.useEffect(() => {
-    axios.get('https://staging-api-gateway-app.herokuapp.com/metrics/users/', { headers: { authorization: localStorage.getItem('token') } })
+    axios.get('https://staging-api-gateway-app-v2.herokuapp.com/metrics/users/', { headers: { authorization: localStorage.getItem('token') } })
       .then((results) => results.data)
       .then((data) => {
         setUsers(data);
       });
-    axios.get('https://staging-api-gateway-app.herokuapp.com/metrics/courses/', { headers: { authorization: localStorage.getItem('token') } })
+    axios.get('https://staging-api-gateway-app-v2.herokuapp.com/metrics/courses/', { headers: { authorization: localStorage.getItem('token') } })
       .then((results) => results.data)
       .then((data) => {
         setCourses(data);

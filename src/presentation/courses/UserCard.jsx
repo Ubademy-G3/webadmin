@@ -22,7 +22,7 @@ export default function UserCard(props) {
   const [user, setUser] = React.useState(null);
   console.log(p);
   React.useEffect(() => {
-    axios.get(`https://staging-api-gateway-app.herokuapp.com/users/${p.instructor.user_id}`, { headers: { authorization: localStorage.getItem('token') } })
+    axios.get(`https://staging-api-gateway-app-v2.herokuapp.com/users/${p.instructor.user_id}`, { headers: { authorization: localStorage.getItem('token') } })
       .then((results) => results.data)
       .then((data) => {
         setUser(data);

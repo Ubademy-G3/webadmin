@@ -13,13 +13,13 @@ export default function Courses() {
   const [query, setQuery] = React.useState({});
 
   React.useEffect(() => {
-    axios.get('https://staging-api-gateway-app.herokuapp.com/courses', { headers: { authorization: localStorage.getItem('token') } })
+    axios.get('https://staging-api-gateway-app-v2.herokuapp.com/courses', { headers: { authorization: localStorage.getItem('token') } })
       .then((results) => results.data)
       .then((data) => {
         setCourses(data);
       });
 
-    axios.get('https://staging-api-gateway-app.herokuapp.com/categories', { headers: { authorization: localStorage.getItem('token') } })
+    axios.get('https://staging-api-gateway-app-v2.herokuapp.com/categories', { headers: { authorization: localStorage.getItem('token') } })
       .then((results) => results.data)
       .then((data) => {
         setCategories(data);
@@ -27,7 +27,7 @@ export default function Courses() {
   }, []);
 
   React.useEffect(() => {
-    axios.get('https://staging-api-gateway-app.herokuapp.com/courses', { params: { text: searchInput }, headers: { authorization: localStorage.getItem('token') } })
+    axios.get('https://staging-api-gateway-app-v2.herokuapp.com/courses', { params: { text: searchInput }, headers: { authorization: localStorage.getItem('token') } })
       .then((results) => results.data)
       .then((data) => {
         setCourses(data);
@@ -37,7 +37,7 @@ export default function Courses() {
   React.useEffect(() => {
     if ((query.category && query.category.length === 1)
     || (query.subscription_type && query.subscription_type.length === 1)) {
-      axios.get('https://staging-api-gateway-app.herokuapp.com/courses', { params: query, headers: { authorization: localStorage.getItem('token') } })
+      axios.get('https://staging-api-gateway-app-v2.herokuapp.com/courses', { params: query, headers: { authorization: localStorage.getItem('token') } })
         .then((results) => results.data)
         .then((data) => {
           setCourses(data);
@@ -46,7 +46,7 @@ export default function Courses() {
           setCourses(null);
         });
     } else {
-      axios.get('https://staging-api-gateway-app.herokuapp.com/courses', { params: query, headers: { authorization: localStorage.getItem('token') }, paramsSerializer: (params) => qs.stringify(params, { arrayFormat: 'repeat' }) })
+      axios.get('https://staging-api-gateway-app-v2.herokuapp.com/courses', { params: query, headers: { authorization: localStorage.getItem('token') }, paramsSerializer: (params) => qs.stringify(params, { arrayFormat: 'repeat' }) })
         .then((results) => results.data)
         .then((data) => {
           setCourses(data);

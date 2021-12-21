@@ -32,7 +32,7 @@ export default function ServiceDialog(props) {
   };
 
   const handleBlockService = () => {
-    axios.patch(`https://staging-api-gateway-app.herokuapp.com/microservices/${p.serviceId}`, { state: 'blocked' }, { headers: { authorization: localStorage.getItem('token') } })
+    axios.patch(`https://staging-api-gateway-app-v2.herokuapp.com/microservices/${p.serviceId}`, { state: 'blocked' }, { headers: { authorization: localStorage.getItem('token') } })
       .then((results) => results.data)
       .then(() => {
         p.setShowDialog(null);
@@ -42,7 +42,7 @@ export default function ServiceDialog(props) {
   };
 
   const handleUnblockService = () => {
-    axios.patch(`https://staging-api-gateway-app.herokuapp.com/microservices/${p.serviceId}`, { state: 'active' }, { headers: { authorization: localStorage.getItem('token') } })
+    axios.patch(`https://staging-api-gateway-app-v2.herokuapp.com/microservices/${p.serviceId}`, { state: 'active' }, { headers: { authorization: localStorage.getItem('token') } })
       .then((results) => results.data)
       .then(() => {
         p.setShowDialog(null);
@@ -52,7 +52,7 @@ export default function ServiceDialog(props) {
   };
 
   React.useEffect(() => {
-    axios.get(`https://staging-api-gateway-app.herokuapp.com/microservices/${p.serviceId}`, { headers: { authorization: localStorage.getItem('token') } })
+    axios.get(`https://staging-api-gateway-app-v2.herokuapp.com/microservices/${p.serviceId}`, { headers: { authorization: localStorage.getItem('token') } })
       .then((results) => results.data)
       .then((data) => {
         setService(data);

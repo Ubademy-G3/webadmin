@@ -36,7 +36,7 @@ export default function ServiceDialog(props) {
     const firstName = e.target.name.value;
     const lastName = e.target.lastname.value;
 
-    axios.post('https://staging-api-gateway-app.herokuapp.com/authorization/', {
+    axios.post('https://staging-api-gateway-app-v2.herokuapp.com/authorization/', {
       email, firstName, lastName, password: 'dummypwd', rol: 'admin',
     }, { headers: { authorization: localStorage.getItem('token') } })
       .then((results) => results.data)

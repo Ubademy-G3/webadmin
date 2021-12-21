@@ -34,7 +34,7 @@ export default function UsersTable(props) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {p.users.map((row) => (
+          {slice.map((row) => (
             <TableRow key={row.id}>
               <TableCell>
                 <Button href={`/users/${row.id}`} target="_blank">

@@ -21,19 +21,19 @@ export default function CourseProfile() {
   const urlParams = useParams();
 
   React.useEffect(() => {
-    axios.get(`https://staging-api-gateway-app.herokuapp.com/courses/${urlParams.id}`, { headers: { authorization: localStorage.getItem('token') } })
+    axios.get(`https://staging-api-gateway-app-v2.herokuapp.com/courses/${urlParams.id}`, { headers: { authorization: localStorage.getItem('token') } })
       .then((results) => results.data)
       .then((data) => {
         setCourse(data);
       });
 
-    axios.get('https://staging-api-gateway-app.herokuapp.com/categories', { headers: { authorization: localStorage.getItem('token') } })
+    axios.get('https://staging-api-gateway-app-v2.herokuapp.com/categories', { headers: { authorization: localStorage.getItem('token') } })
       .then((results) => results.data)
       .then((data) => {
         setCategories(data);
       });
 
-    axios.get(`https://staging-api-gateway-app.herokuapp.com/courses/${urlParams.id}/users`, { headers: { authorization: localStorage.getItem('token') } })
+    axios.get(`https://staging-api-gateway-app-v2.herokuapp.com/courses/${urlParams.id}/users`, { headers: { authorization: localStorage.getItem('token') } })
       .then((results) => results.data)
       .then((data) => {
         const inst = data.users.filter((user) => (user.user_type === 'instructor' || user.user_type === 'collaborator'));

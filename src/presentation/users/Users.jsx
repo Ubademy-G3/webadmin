@@ -9,7 +9,7 @@ export default function Users() {
   const [showCreateAdminDialog, setShowCreateAdminDialog] = React.useState(false);
 
   React.useEffect(() => {
-    axios.get('https://staging-api-gateway-app.herokuapp.com/users', { headers: { authorization: localStorage.getItem('token') } })
+    axios.get('https://staging-api-gateway-app-v2.herokuapp.com/users', { headers: { authorization: localStorage.getItem('token') } })
       .then((results) => results.data)
       .then((data) => {
         setUsers(data);
