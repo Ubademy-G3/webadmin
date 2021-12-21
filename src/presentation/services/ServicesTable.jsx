@@ -13,6 +13,7 @@ import useTable from '../useTable';
 export default function ServicesTable(props) {
   const p = props;
   const [page, setPage] = React.useState(1);
+  const [showApikey, setShowApikey] = React.useState(false);
   const { slice, range } = useTable(p.services, page, 10);
 
   return (
@@ -42,7 +43,26 @@ export default function ServicesTable(props) {
                 </Button>
               </TableCell>
               <TableCell>{row.name}</TableCell>
-              <TableCell>{row.apikey}</TableCell>
+              <TableCell>
+                <div
+                  onMouseEnter={() => {
+                    setShowApikey(true);
+                  }}
+                  onMouseLeave={() => {
+                    setShowApikey(false);
+                  }}
+                >
+                  {showApikey ? (
+                    <>
+                      {row.apikey}
+                    </>
+                  ) : (
+                    <>
+                      {row.apikey.replaceAll(/./g, '*')}
+                    </>
+                  )}
+                </div>
+              </TableCell>
               <TableCell>{row.state}</TableCell>
               <TableCell>{row.timestamp.substring(0, 10)}</TableCell>
             </TableRow>

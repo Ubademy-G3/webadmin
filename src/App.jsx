@@ -15,6 +15,7 @@ import CourseProfile from './presentation/courses/CourseProfile';
 import Transactions from './presentation/transactions/Transactions';
 import Services from './presentation/services/Services';
 import Layout from './presentation/Layout';
+import ForgotPassword from './presentation/ForgotPassword';
 import './App.css';
 
 function RequireAuth({ children }) {
@@ -101,6 +102,12 @@ function App() {
                   <Services />
                 </Layout>
               </RequireAuth>
+            )}
+          />
+          <Route
+            path="/forgot-password"
+            element={(
+              <ForgotPassword />
             )}
           />
         </Routes>

@@ -18,19 +18,19 @@ export default function UserProfile() {
   const params = useParams();
 
   React.useEffect(() => {
-    axios.get(`https://staging-api-gateway-app.herokuapp.com/users/${params.id}`, { headers: { authorization: localStorage.getItem('token') } })
+    axios.get(`https://staging-api-gateway-app-v2.herokuapp.com/users/${params.id}`, { headers: { authorization: localStorage.getItem('token') } })
       .then((results) => results.data)
       .then((data) => {
         setUser(data);
       });
 
-    axios.get(`https://staging-api-gateway-app.herokuapp.com/users/${params.id}/courses`, { headers: { authorization: localStorage.getItem('token') } })
+    axios.get(`https://staging-api-gateway-app-v2.herokuapp.com/users/${params.id}/courses`, { headers: { authorization: localStorage.getItem('token') } })
       .then((results) => results.data)
       .then((data) => {
         setCourses(data);
       });
 
-    axios.get(`https://staging-api-gateway-app.herokuapp.com/users/${params.id}/wallet`, { headers: { authorization: localStorage.getItem('token') } })
+    axios.get(`https://staging-api-gateway-app-v2.herokuapp.com/users/${params.id}/wallet`, { headers: { authorization: localStorage.getItem('token') } })
       .then((results) => results.data)
       .then((data) => {
         console.log(data);

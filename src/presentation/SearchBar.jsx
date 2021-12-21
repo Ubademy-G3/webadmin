@@ -4,6 +4,19 @@ import TextField from '@mui/material/TextField';
 
 export default function SearchBar(props) {
   const p = props;
+  const [timer, setTimer] = React.useState(null);
+
+  const changeDelay = (change) => {
+    if (timer) {
+      clearTimeout(timer);
+      setTimer(null);
+    }
+    setTimer(
+      setTimeout(() => {
+        p.setInput(change);
+      }, 300),
+    );
+  };
 
   return (
     <Box
@@ -15,7 +28,7 @@ export default function SearchBar(props) {
         marginBottom: '20px',
       }}
     >
-      <TextField hiddenLabel fullWidth label="Search course..." id="search-bar" onChange={(e) => { p.setInput(e.target.value); }} />
+      <TextField hiddenLabel fullWidth label="Search course..." id="search-bar" onChange={(e) => { changeDelay(e.target.value); }} />
     </Box>
   );
 }

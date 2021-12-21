@@ -35,7 +35,7 @@ export default function ServiceDialog(props) {
     const name = e.target.name.value;
     const apikey = e.target.apikey.value;
 
-    axios.post('https://staging-api-gateway-app.herokuapp.com/microservices/', { name, apikey, state: 'active' }, { headers: { authorization: localStorage.getItem('token') } })
+    axios.post('https://staging-api-gateway-app-v2.herokuapp.com/microservices/', { name, apikey, state: 'active' }, { headers: { authorization: localStorage.getItem('token') } })
       .then((results) => results.data)
       .then((response) => {
         console.log(response);

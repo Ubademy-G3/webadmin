@@ -22,7 +22,7 @@ export default function CourseCard(props) {
   const p = props;
 
   React.useEffect(() => {
-    axios.get(`https://staging-api-gateway-app.herokuapp.com/courses/${p.id}`, { headers: { authorization: localStorage.getItem('token') } })
+    axios.get(`https://staging-api-gateway-app-v2.herokuapp.com/courses/${p.id}`, { headers: { authorization: localStorage.getItem('token') } })
       .then((results) => results.data)
       .then((data) => {
         setCourses(data);

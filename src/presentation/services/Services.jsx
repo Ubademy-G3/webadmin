@@ -13,7 +13,7 @@ export default function Services() {
   const [showCreateDialog, setShowCreateDialog] = React.useState(false);
 
   React.useEffect(() => {
-    axios.get('https://staging-api-gateway-app.herokuapp.com/microservices/', { headers: { authorization: localStorage.getItem('token') } })
+    axios.get('https://staging-api-gateway-app-v2.herokuapp.com/microservices/', { headers: { authorization: localStorage.getItem('token') } })
       .then((results) => results.data)
       .then((data) => {
         setServices(data.microservices);
