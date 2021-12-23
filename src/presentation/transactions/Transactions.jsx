@@ -53,6 +53,13 @@ export default function Transactions() {
       });
   }, []);
 
+  const getCreatedAt = (timestamp) => {
+    const date = new Date(timestamp);
+    const iso = date.toISOString().match(/(\d{4}-\d{2}-\d{2})T(\d{2}:\d{2}:\d{2})/);
+
+    return `${iso[1]} ${iso[2]}`;
+  };
+
   return (
     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
       <Typography component="p" variant="h4">
@@ -164,7 +171,7 @@ export default function Transactions() {
                   </TableCell>
                   <TableCell align="right">{row.amount_sent}</TableCell>
                   <TableCell align="right">{row.tx_hash}</TableCell>
-                  <TableCell align="right">{row.created_at}</TableCell>
+                  <TableCell align="right">{getCreatedAt(row.created_at)}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
