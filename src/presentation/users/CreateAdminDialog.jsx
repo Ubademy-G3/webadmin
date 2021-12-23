@@ -26,7 +26,7 @@ export default function ServiceDialog(props) {
   const [open, setOpen] = React.useState(p.open);
 
   const handleClose = () => {
-    p.setShowCreateDialog(false);
+    p.setShowCreateAdminDialog(false);
     setOpen(false);
   };
 
