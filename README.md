@@ -59,7 +59,7 @@ Different users with different profiles will access the back office through the 
 
 * This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-#Local Environment
+# Local Environment
 
 ## Available Scripts
 
