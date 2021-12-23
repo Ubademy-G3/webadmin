@@ -43,13 +43,11 @@ export default function Transactions() {
         setMetrics(d);
         createMoneyData(d);
         createTransactionsData(d);
-        console.log(d);
       });
     axios.get('https://staging-api-gateway-app-v2.herokuapp.com/deposits', { headers: { authorization: localStorage.getItem('token') } })
       .then((results) => results.data)
       .then((d) => {
         setPayments(d);
-        console.log(d);
       });
   }, []);
 
@@ -164,7 +162,7 @@ export default function Transactions() {
                   </TableCell>
                   <TableCell align="right">{row.amount_sent}</TableCell>
                   <TableCell align="right">{row.tx_hash}</TableCell>
-                  <TableCell align="right">{row.created_at}</TableCell>
+                  <TableCell align="right">{row.created_at.substring(0, 10)}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
