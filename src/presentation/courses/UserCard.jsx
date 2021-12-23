@@ -20,13 +20,11 @@ const StyledBadge = styled(Badge)(() => ({
 export default function UserCard(props) {
   const p = props;
   const [user, setUser] = React.useState(null);
-  console.log(p);
   React.useEffect(() => {
     axios.get(`https://staging-api-gateway-app-v2.herokuapp.com/users/${p.instructor.user_id}`, { headers: { authorization: localStorage.getItem('token') } })
       .then((results) => results.data)
       .then((data) => {
         setUser(data);
-        console.log(data);
       });
   }, []);
 

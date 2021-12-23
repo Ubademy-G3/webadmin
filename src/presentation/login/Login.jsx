@@ -31,7 +31,6 @@ export default function Login() {
 
     axios.post('https://staging-api-gateway-app-v2.herokuapp.com/authentication', logInfo)
       .then((res) => {
-        console.log(res);
         if (res.status !== 200) {
           throw new Error(res.status);
         }

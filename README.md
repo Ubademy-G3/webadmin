@@ -1,6 +1,65 @@
-# Getting Started with Create React App
+# Backoffice Web
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Service dedicated to the administration of the app, AKA 'control panel'.
+Different users with different profiles will access the back office through the same url, although the options that will be shown to each user will be different and will depend on their profile.
+
+## Directory structure
+
+```tree
+├── package.json
+├── package-lock.json
+├── README.md
+└── src
+    ├── App.css
+    ├── App.jsx
+    ├── index.css
+    ├── index.jsx
+    ├── logo.svg
+    └── presentation
+        ├── courses
+        │   ├── CourseFilter.jsx
+        │   ├── CourseProfile.jsx
+        │   ├── Courses.jsx
+        │   ├── CoursesTable.jsx
+        │   ├── ModuleItem.jsx
+        │   └── UserCard.jsx
+        ├── dashboard
+        │   ├── Chart.jsx
+        │   ├── Dashboard.jsx
+        │   ├── Deposits.jsx
+        │   ├── Orders.jsx
+        │   └── Title.jsx
+        ├── ForgotPassword.jsx
+        ├── Layout.jsx
+        ├── login
+        │   ├── Login.css
+        │   └── Login.jsx
+        ├── NavBar.jsx
+        ├── SearchBar.jsx
+        ├── services
+        │   ├── CreateServiceDialog.jsx
+        │   ├── ServiceDialog.jsx
+        │   ├── ServicesFilter.jsx
+        │   ├── Services.jsx
+        │   └── ServicesTable.jsx
+        ├── TableFooter.jsx
+        ├── TableFooter.module.css
+        ├── transactions
+        │   └── Transactions.jsx
+        ├── users
+        │   ├── CourseCard.jsx
+        │   ├── CreateAdminDialog.jsx
+        │   ├── UserProfile.jsx
+        │   ├── Users.jsx
+        │   └── UsersTable.jsx
+        └── useTable.jsx
+```
+
+# Tech Stack
+
+* This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+# Local Environment
 
 ## Available Scripts
 
@@ -39,32 +98,9 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
 ### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
 ### `yarn build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+You can try it out at <https://ubademy-webadmin-app.herokuapp.com/login>

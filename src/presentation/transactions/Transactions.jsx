@@ -43,13 +43,11 @@ export default function Transactions() {
         setMetrics(d);
         createMoneyData(d);
         createTransactionsData(d);
-        console.log(d);
       });
     axios.get('https://staging-api-gateway-app-v2.herokuapp.com/deposits', { headers: { authorization: localStorage.getItem('token') } })
       .then((results) => results.data)
       .then((d) => {
         setPayments(d);
-        console.log(d);
       });
   }, []);
 
