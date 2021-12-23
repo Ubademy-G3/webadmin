@@ -67,14 +67,16 @@ export default function UserProfile() {
                 </Typography>
               </div>
             )}
-            <div style={{ textAlign: 'center', marginTop: 30 }}>
-              <PaidIcon fontSize="large" />
-              <div style={{ marginLeft: '5px' }}>
-                <Typography variant="subtitle2">
-                  {wallet.balance}
-                </Typography>
+            {wallet && (
+              <div style={{ textAlign: 'center', marginTop: 30 }}>
+                <PaidIcon fontSize="large" />
+                <div style={{ marginLeft: '5px' }}>
+                  <Typography variant="subtitle2">
+                    {wallet.balance}
+                  </Typography>
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
         <div style={{ textAlign: 'left', margin: '20px', marginLeft: '60px' }}>
