@@ -40,8 +40,7 @@ export default function ServiceDialog(props) {
       email, firstName, lastName, password: 'dummypwd', rol: 'admin',
     }, { headers: { authorization: localStorage.getItem('token') } })
       .then((results) => results.data)
-      .then((response) => {
-        console.log(response);
+      .then(() => {
         p.setShowCreateAdminDialog(null);
         setOpen(false);
         window.location.reload();

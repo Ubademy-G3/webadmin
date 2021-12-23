@@ -80,19 +80,6 @@ export default function CourseFilter(props) {
     setSubscription(subscription);
   };
 
-  /* const addLevel = (checkedItem, add) => {
-    if (add) {
-      level.push(checkedItem);
-    } else {
-      const index = level.indexOf(checkedItem);
-      if (index > -1) {
-        level.splice(index, 1);
-      }
-    }
-    setLevel(level);
-    console.log(level);
-  }; */
-
   const setFilter = () => {
     const query = {
       category: categories,

@@ -37,8 +37,7 @@ export default function ServiceDialog(props) {
 
     axios.post('https://staging-api-gateway-app-v2.herokuapp.com/microservices/', { name, apikey, state: 'active' }, { headers: { authorization: localStorage.getItem('token') } })
       .then((results) => results.data)
-      .then((response) => {
-        console.log(response);
+      .then(() => {
         p.setShowCreateDialog(null);
         setOpen(false);
         window.location.reload();

@@ -25,6 +25,7 @@ export default function ServiceDialog(props) {
   const p = props;
   const [open, setOpen] = React.useState(p.open);
   const [service, setService] = React.useState(null);
+  const [showApikey, setShowApikey] = React.useState(false);
 
   const handleClose = () => {
     p.setShowDialog(null);
@@ -51,6 +52,13 @@ export default function ServiceDialog(props) {
       });
   };
 
+  const getCreatedAt = (timestamp) => {
+    const date = new Date(timestamp);
+    const iso = date.toISOString().match(/(\d{4}-\d{2}-\d{2})T(\d{2}:\d{2}:\d{2})/);
+
+    return `${iso[1]} ${iso[2]}`;
+  };
+
   React.useEffect(() => {
     axios.get(`https://staging-api-gateway-app-v2.herokuapp.com/microservices/${p.serviceId}`, { headers: { authorization: localStorage.getItem('token') } })
       .then((results) => results.data)
@@ -73,16 +81,35 @@ export default function ServiceDialog(props) {
           </DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-description">
-              {service.description}
-              <br />
-              <br />
-              Created at:
-              {' '}
-              {service.timestamp}
-              <br />
-              Apikey:
-              {' '}
-              {service.apikey}
+              <div>
+                {service.description}
+              </div>
+              <div>
+                Created at:
+                {' '}
+                {getCreatedAt(service.timestamp)}
+                <br />
+              </div>
+              <div
+                onMouseEnter={() => {
+                  setShowApikey(true);
+                }}
+                onMouseLeave={() => {
+                  setShowApikey(false);
+                }}
+              >
+                Apikey:
+                {' '}
+                {showApikey ? (
+                  <>
+                    {service.apikey}
+                  </>
+                ) : (
+                  <>
+                    {service.apikey.replaceAll(/./g, '*')}
+                  </>
+                )}
+              </div>
             </DialogContentText>
           </DialogContent>
           <DialogActions>

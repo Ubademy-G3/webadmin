@@ -11,6 +11,7 @@ import TimerIcon from '@mui/icons-material/Timer';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import Grid from '@mui/material/Grid';
+import { CircularProgress } from '@mui/material';
 import UserCard from './UserCard';
 import ModuleItem from './ModuleItem';
 
@@ -18,13 +19,20 @@ export default function CourseProfile() {
   const [course, setCourse] = React.useState(null);
   const [categories, setCategories] = React.useState(null);
   const [instructors, setInstructors] = React.useState(null);
+  const [loadingCourse, setLoadingCourse] = React.useState(false);
+  const [loadingInstructors, setLoadingInstructors] = React.useState(false);
   const urlParams = useParams();
 
   React.useEffect(() => {
+    setLoadingCourse(true);
+    setLoadingInstructors(true);
     axios.get(`https://staging-api-gateway-app-v2.herokuapp.com/courses/${urlParams.id}`, { headers: { authorization: localStorage.getItem('token') } })
       .then((results) => results.data)
       .then((data) => {
         setCourse(data);
+        setLoadingCourse(false);
+      }).catch(() => {
+        setLoadingCourse(false);
       });
 
     axios.get('https://staging-api-gateway-app-v2.herokuapp.com/categories', { headers: { authorization: localStorage.getItem('token') } })
@@ -38,12 +46,15 @@ export default function CourseProfile() {
       .then((data) => {
         const inst = data.users.filter((user) => (user.user_type === 'instructor' || user.user_type === 'collaborator'));
         setInstructors(inst);
+        setLoadingInstructors(false);
+      }).catch(() => {
+        setLoadingInstructors(false);
       });
   }, []);
 
   return (
     <>
-      {course && (
+      {course && !loadingCourse ? (
         <Paper style={{ margin: '50px' }}>
           <div style={{ display: 'flex', justifyContent: 'space-around' }}>
             <Avatar
@@ -112,16 +123,24 @@ export default function CourseProfile() {
             <Grid container spacing={3}>
               <Grid item xs={12}>
                 <Grid container spacing={3}>
-                  {instructors && instructors.map((instructor) => (
-                    <Grid lg={4} sm={12} key={instructor.id} item>
-                      <UserCard instructor={instructor} />
-                    </Grid>
-                  ))}
+                  {instructors && !loadingInstructors ? (
+                    <>
+                      {instructors.map((instructor) => (
+                        <Grid lg={4} sm={12} key={instructor.id} item>
+                          <UserCard instructor={instructor} />
+                        </Grid>
+                      ))}
+                    </>
+                  ) : (
+                    <CircularProgress />
+                  )}
                 </Grid>
               </Grid>
             </Grid>
           </div>
         </Paper>
+      ) : (
+        <CircularProgress />
       )}
     </>
   );
